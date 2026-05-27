@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TornqvistAI | Mer synlighet. Flere kunder.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off-white: #f7f6f3;
+    --ice: #eef4f7;
+    --ice-mid: #d6e8ef;
+    --black: #0d0d0d;
+    --dark: #1a1a1a;
+    --gray: #6b7280;
+    --gray-light: #e5e7eb;
+    --accent: #0a3d52;
+    --accent-light: #105570;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-light);
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--black);
+  }
+  .logo-at {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+    color: var(--black);
+  }
+  .logo-name {
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: -2px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  nav ul a {
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  nav ul a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--black);
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    font-size: 0.875rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+
+  /* HERO */
+  #hjem {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    background: var(--white);
+  }
+
+  .hero-left { max-width: 560px; }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--ice);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-placeholder {
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 16/10;
+    background: var(--ice);
+    border-radius: 16px;
+    border: 1px solid var(--ice-mid);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .video-placeholder video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: none;
+  }
+  .video-placeholder .play-icon {
+    width: 64px; height: 64px;
+    background: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .video-placeholder .play-icon svg { margin-left: 4px; }
+  .video-placeholder p { font-size: 0.8rem; color: var(--gray); }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--off-white);
+    border-top: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light);
+    padding: 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label { font-size: 0.85rem; color: var(--gray); }
+
+  /* SECTIONS shared */
+  section { padding: 6rem 4rem; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  /* SERVICES */
+  #tjenester { background: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .service-card {
+    background: var(--off-white);
+    border: 1px solid var(--gray-light);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .service-card:hover { border-color: var(--ice-mid); transform: translateY(-3px); }
+  .service-icon {
+    width: 48px; height: 48px;
+    background: var(--ice);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .service-icon svg { width: 22px; height: 22px; stroke: var(--accent); }
+  .service-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+  .service-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+
+  /* BEFORE/AFTER */
+  #resultater { background: var(--ice); }
+  .ba-toggle-wrapper { max-width: 600px; margin: 3.5rem auto 0; }
+  .ba-panel-single {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--gray-light);
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  .ba-btn {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 2.5rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.04em;
+  }
+  .ba-btn:hover { background: var(--accent); transform: translateY(-1px); }
+  .ba-panel {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--gray-light);
+    overflow: hidden;
+  }
+  .ba-header {
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ba-header.before { color: #b91c1c; background: #fef2f2; border-bottom: 1px solid #fee2e2; }
+  .ba-header.after { color: #166534; background: #f0fdf4; border-bottom: 1px solid #bbf7d0; }
+  .ba-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .ba-dot.red { background: #ef4444; }
+  .ba-dot.green { background: #22c55e; }
+  .ba-img {
+    width: 100%; height: 220px;
+    background: var(--off-white);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+    color: var(--gray); font-size: 0.8rem;
+  }
+  .ba-img svg { width: 32px; height: 32px; stroke: var(--gray-light); }
+  .ba-caption {
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* PROCESS */
+  #prosess { background: var(--white); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--gray-light);
+    z-index: 0;
+  }
+  .step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .step-num {
+    width: 48px; height: 48px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    margin: 0 auto 1.5rem;
+  }
+  .step h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .step p { font-size: 0.875rem; color: var(--gray); line-height: 1.7; }
+
+  /* COMPARE */
+  #hvorfor { background: var(--off-white); }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+  .compare-col h4 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .compare-col.theirs h4 { color: var(--gray); }
+  .compare-col.ours h4 { color: var(--accent); }
+  .compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    font-size: 0.9rem;
+  }
+  .compare-item:last-child { border-bottom: none; }
+  .ci-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+  /* FAQ */
+  #faq { background: var(--white); }
+  .faq-list { margin-top: 3rem; max-width: 680px; }
+  .faq-item {
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 1.25rem 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--black);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .faq-q span { transition: transform 0.3s; font-size: 1.2rem; color: var(--gray); }
+  .faq-q.open span { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s;
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .faq-a.open { max-height: 300px; padding-bottom: 1.25rem; }
+
+  /* CONTACT */
+  #kontakt {
+    background: var(--black);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  #kontakt .section-tag { color: var(--ice-mid); }
+  #kontakt .section-title { color: var(--white); }
+  #kontakt .section-sub { color: rgba(255,255,255,0.55); }
+
+  .contact-info { margin-top: 2.5rem; }
+  .contact-info-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-info-item:last-child { border-bottom: none; }
+  .contact-info-item svg { width: 20px; height: 20px; stroke: var(--ice-mid); flex-shrink: 0; }
+  .contact-info-item a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .contact-info-item a:hover { color: var(--ice-mid); }
+
+  .contact-form-wrapper {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+  .contact-form-wrapper h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 1.75rem;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--ice-mid); }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .btn-send {
+    width: 100%;
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    padding: 1rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+  .btn-send:hover { background: var(--ice); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--off-white);
+    border-top: 1px solid var(--gray-light);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer p { font-size: 0.8rem; color: var(--gray); }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    #hjem { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .stats-bar { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .ba-toggle-wrapper { padding: 0; }
+    .process-steps { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+    .compare-grid { grid-template-columns: 1fr; }
+    #kontakt { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hjem" class="logo">
+    <span class="logo-at">A.T</span>
+    <span class="logo-name">TornqvistAI</span>
+  </a>
+  <ul>
+    <li><a href="#tjenester">Tjenester</a></li>
+    <li><a href="#resultater">Resultater</a></li>
+    <li><a href="#prosess">Prosess</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontakt oss</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hjem">
+  <div class="hero-left fade-in">
+    <span class="hero-tag">Mer synlighet. Mer trafikk. Flere kunder.</span>
+    <h1 class="hero-title">Mer synlighet.<br><em>Flere kunder.</em><br>Garantert.</h1>
+    <p class="hero-sub">Vi hjelper lokale bedrifter å komme øverst på Google med SEO og Google Ads som faktisk leverer resultater du kan se.</p>
+    <a href="#kontakt" class="btn-primary">Kontakt oss nå →</a>
+  </div>
+  <div class="hero-right fade-in">
+    <div class="video-placeholder" id="videoBox">
+      <video id="heroVideo" controls></video>
+      <div id="videoOverlay">
+        <div class="play-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+        <p>Last opp din video her</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar fade-in">
+  <div class="stat-item">
+    <div class="stat-number">90</div>
+    <div class="stat-label">Resultater innen 90 dager. Ser du ikke fremgang, fortsetter vi å jobbe for deg uten ekstra kostnad til vi når målet sammen.</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Skreddersydde løsninger</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">0</div>
+    <div class="stat-label">Skjulte kostnader eller bindingstid</div>
+  </div>
+</div>
+
+<!-- TJENESTER -->
+<section id="tjenester">
+  <div class="fade-in">
+    <span class="section-tag">Hva vi gjør</span>
+    <h2 class="section-title">Tjenester som gir<br>målbare resultater</h2>
+    <p class="section-sub">Vi fokuserer på det som faktisk driver kunder inn døren ikke tomme løfter.</p>
+  </div>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <h3>SEO-synlighet</h3>
+      <p>Vi analyserer søkeord, konkurrenter og markedet ditt og optimaliserer nettsiden din slik at kundene finner deg først på Google. Organisk trafikk som varer.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <h3>Google Ads med AI</h3>
+      <p>Smarte kampanjer på Google som optimaliserer seg selv i sanntid. Vi sørger for at annonsene dine treffer rett målgruppe til rett tid, slik at du får mest mulig ut av hver krone du investerer.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Google Business Profile</h3>
+      <p>Optimaliser din Google-profil slik at du vises i kart og lokale søk. Mer troverdighet, flere anmeldelser og direkte trafikk fra folk i ditt område.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Ukentlige rapporter og innsikt</h3>
+      <p>Hver uke får du en klar og oversiktlig rapport som viser nøyaktig hva som skjer, hva som fungerer og hva neste steg er. Ingen fagsjargong, bare tall som betyr noe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTATER (BEFORE/AFTER) -->
+<section id="resultater">
+  <div class="fade-in">
+    <span class="section-tag">Resultater</span>
+    <h2 class="section-title">Fra usynlig til<br>topp 3 på Google</h2>
+    <p class="section-sub">Se hvordan rangeringen ser ut før og etter vi jobber med profilen din.</p>
+  </div>
+  <div class="ba-toggle-wrapper fade-in">
+    <div class="ba-panel-single" id="baPanel">
+      <div class="ba-header before" id="baHeader">
+        <span class="ba-dot red" id="baDot"></span>
+        <span id="baHeaderText">Før TornqvistAI</span>
+      </div>
+      <div class="ba-img" id="baImg">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <span id="baImgText">Last opp bilde (LeadSnap, røde rangeringer)</span>
+      </div>
+      <div class="ba-caption" id="baCaption">Bedriften er nesten usynlig på Google. Lav rangering betyr at potensielle kunder velger konkurrenten istedet.</div>
+    </div>
+    <div style="text-align:center; margin-top: 1.75rem;">
+      <button class="ba-btn" id="baBtn" onclick="toggleBA()">Etter</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROSESS -->
+<section id="prosess">
+  <div class="fade-in">
+    <span class="section-tag">Slik fungerer det</span>
+    <h2 class="section-title">Tre steg til<br>flere kunder</h2>
+  </div>
+  <div class="process-steps fade-in">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Kartlegg muligheter</h3>
+      <p>Vi analyserer bedriften din, markedet og søkeordene kundene bruker og finner eksakt hva som skal til for at du vises øverst.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Sett opp og optimaliser</h3>
+      <p>Vi konfigurerer SEO, Google Ads og din GBP-profil fra bunnen av. Du trenger ikke løfte en finger.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Voks og skaler</h3>
+      <p>Vi følger med på resultatene, justerer kontinuerlig og sørger for at veksten holder seg. Du får rapporten, vi gjør jobben.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HVORFOR VELGE OSS -->
+<section id="hvorfor">
+  <div class="fade-in">
+    <span class="section-tag">Hvorfor oss</span>
+    <h2 class="section-title">TornqvistAI vs.<br>andre byråer</h2>
+  </div>
+  <div class="compare-grid fade-in">
+    <div class="compare-col theirs">
+      <h4>Andre byråer</h4>
+      <div class="compare-item"><span class="ci-icon">✗</span>Komplisert oppsett og forvirrende verktøy</div>
+      <div class="compare-item"><span class="ci-icon">✗</span>Lange kontrakter som låser deg inne</div>
+      <div class="compare-item"><span class="ci-icon">✗</span>Generiske løsninger uten tilpasning</div>
+      <div class="compare-item"><span class="ci-icon">✗</span>Treg support og lite kommunikasjon</div>
+      <div class="compare-item"><span class="ci-icon">✗</span>Betaler for resultater du ikke kan måle</div>
+    </div>
+    <div class="compare-col ours">
+      <h4>TornqvistAI</h4>
+      <div class="compare-item"><span class="ci-icon">✓</span>Vi tar oss av alt enkelt og transparent</div>
+      <div class="compare-item"><span class="ci-icon">✓</span>Ingen bindingstid eller skjulte gebyrer</div>
+      <div class="compare-item"><span class="ci-icon">✓</span>Skreddersydde løsninger for din bransje</div>
+      <div class="compare-item"><span class="ci-icon">✓</span>Rask, personlig support når du trenger det</div>
+      <div class="compare-item"><span class="ci-icon">✓</span>Klare rapporter med målbare resultater</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="fade-in">
+    <span class="section-tag">Spørsmål og svar</span>
+    <h2 class="section-title">Ofte stilte<br>spørsmål</h2>
+  </div>
+  <div class="faq-list fade-in">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Hvor raskt ser jeg resultater? <span>+</span></button>
+      <div class="faq-a">SEO er en langsiktig strategi de første synlige forbedringene kommer typisk innen 30 til 60 dager. Google Ads kan generere trafikk fra dag én. Vi gir deg en realistisk tidslinje basert på din bransje og konkurranse.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Hva koster det? <span>+</span></button>
+      <div class="faq-a">Vi tilbyr pakker tilpasset bedriftens størrelse og behov. Ta kontakt for et uforpliktende pristilbud ingen skjulte kostnader og ingen bindingstid.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Fungerer dette for min bransje? <span>+</span></button>
+      <div class="faq-a">Ja. Vi jobber med lokale bedrifter i alle bransjer bilverksteder, rørleggere, tresurgister, håndverkere og mer. Hvis kundene dine søker på Google, kan vi hjelpe deg å bli funnet.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Må jeg gjøre noe selv? <span>+</span></button>
+      <div class="faq-a">Nesten ingenting. Vi tar oss av oppsett, optimalisering og rapportering. Det eneste vi trenger fra deg er litt grunnleggende info om bedriften din i starten.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Hva om jeg ikke er fornøyd? <span>+</span></button>
+      <div class="faq-a">Vi lover åpen kommunikasjon og transparens hele veien. Ingen bindingstid betyr at du alltid kan avslutte uten ekstra kostnader. Vi jobber for å beholde kundene våre ikke binde dem.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="fade-in">
+    <span class="section-tag">Kom i gang</span>
+    <h2 class="section-title">Klar for flere<br>kunder?</h2>
+    <p class="section-sub">Ta kontakt i dag for en gratis og uforpliktende prat om hva vi kan gjøre for bedriften din.</p>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:adrian.tornqvist@tornqvistai.no">adrian.tornqvist@tornqvistai.no</a>
+      </div>
+      <div class="contact-info-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+4700000000">+47 930 23 747</a>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form-wrapper fade-in">
+    <h3>Send oss en melding</h3>
+    <form onsubmit="sendForm(event)">
+      <div class="form-group">
+        <label>Navn</label>
+        <input type="text" placeholder="Ditt navn" required>
+      </div>
+      <div class="form-group">
+        <label>E-post</label>
+        <input type="email" placeholder="din@epost.no" required>
+      </div>
+      <div class="form-group">
+        <label>Bedrift</label>
+        <input type="text" placeholder="Bedriftsnavn (valgfritt)">
+      </div>
+      <div class="form-group">
+        <label>Melding</label>
+        <textarea placeholder="Fortell litt om bedriften din og hva du ønsker hjelp med..." required></textarea>
+      </div>
+      <button type="submit" class="btn-send">Send melding →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">
+    <span class="logo-at" style="font-size:1.3rem; color:#0d0d0d;">A.T</span>
+    <span class="logo-name">TornqvistAI</span>
+  </div>
+  <p>© 2026 TornqvistAI. Alle rettigheter forbeholdt.</p>
+  <p><a href="mailto:adrian.tornqvist@tornqvistai.no" style="color:#6b7280;text-decoration:none;">adrian.tornqvist@tornqvistai.no</a></p>
+</footer>
+
+<script>
+var baState = 'before';
+function toggleBA() {
+  const header = document.getElementById('baHeader');
+  const dot = document.getElementById('baDot');
+  const headerText = document.getElementById('baHeaderText');
+  const imgText = document.getElementById('baImgText');
+  const caption = document.getElementById('baCaption');
+  const btn = document.getElementById('baBtn');
+  if (baState === 'before') {
+    header.className = 'ba-header after';
+    dot.className = 'ba-dot green';
+    headerText.textContent = 'Etter TornqvistAI';
+    imgText.textContent = 'Last opp bilde (LeadSnap, grønne rangeringer)';
+    caption.textContent = 'Bedriften dominerer lokale søk. Grønt betyr topp 3, der kundene faktisk klikker og ringer.';
+    btn.textContent = 'Før';
+    baState = 'after';
+  } else {
+    header.className = 'ba-header before';
+    dot.className = 'ba-dot red';
+    headerText.textContent = 'Før TornqvistAI';
+    imgText.textContent = 'Last opp bilde (LeadSnap, røde rangeringer)';
+    caption.textContent = 'Bedriften er nesten usynlig på Google. Lav rangering betyr at potensielle kunder velger konkurrenten istedet.';
+    btn.textContent = 'Etter';
+    baState = 'before';
+  }
+}
+
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+function sendForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-send');
+  btn.textContent = 'Sendt! Vi tar kontakt snart ✓';
+  btn.style.background = '#d1fae5';
+  btn.style.color = '#065f46';
+  setTimeout(() => { btn.textContent = 'Send melding →'; btn.style.background = ''; btn.style.color = ''; }, 4000);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
