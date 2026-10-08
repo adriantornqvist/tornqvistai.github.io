@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hvem svarer telefonen din? | TornqvistAI</title>
+<meta name="description" content="Norsk KI-telefonagent for håndverkere. Svarer når du ikke rekker det, tar imot oppdraget og sender deg alt på e-post. 0 kr i oppstart.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Hvem svarer telefonen når du ikke rekker det?">
+<meta property="og:description" content="Norsk KI-telefonagent for håndverkere. Ring demoen og hør selv.">
+<meta property="og:locale" content="nb_NO">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='80' font-family='Inter,-apple-system,sans-serif' font-size='86' font-weight='800' letter-spacing='-3' text-anchor='middle' fill='%2308090A'%3EAI%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="/assets/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add("js");</script>
+<style>
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("/assets/inter-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --ink:#08090A;--ink-soft:#55565A;--paper:#FFFFFF;--mist:#F4F4F6;--line:#E5E5E8;--edge:#C9CACE;
+  --accent:#1D6FFF;--accent-deep:#1258D6;--accent-tint:#EAF1FF;--live:#16A34A;--danger:#D92D20;--warm:#B45309;
+  --ease:cubic-bezier(0.22,1,0.36,1);--section-pad:112px;--radius-card:12px;--radius-panel:20px;
+  --shadow-1:0 1px 2px rgba(0,0,0,.04);--shadow-2:0 8px 24px rgba(0,0,0,.06);--shadow-3:0 24px 64px rgba(8,9,10,.12);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:1.0625rem;line-height:1.6;font-weight:400;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;text-wrap:pretty;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-deep)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,p,ol,ul,dl,dd,fieldset,legend{margin:0;padding:0}
+h1{font-size:clamp(2.375rem,6.2vw,4rem);font-weight:600;line-height:1.04;letter-spacing:-0.035em}
+h2{font-size:clamp(1.875rem,4vw,3rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;max-width:22ch}
+h3{font-size:1.1875rem;font-weight:600;letter-spacing:-0.015em;line-height:1.3}
+p{color:var(--ink-soft);max-width:62ch}
+strong{color:var(--ink);font-weight:600}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:var(--section-pad) 0}
+section[id]{scroll-margin-top:72px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.section-head p{margin-top:18px;font-size:1.125rem}
+.center{text-align:center;display:flex;flex-direction:column;align-items:center}
+.icon{width:24px;height:24px;flex:none;display:block}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Logo */
+.logo{display:block;height:36px;width:auto;color:var(--ink)}
+.logo text{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:currentColor}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;font:inherit;font-size:1rem;font-weight:500;letter-spacing:-0.01em;cursor:pointer;border:1px solid transparent;white-space:nowrap;text-align:center;transition:transform 180ms var(--ease),background-color 180ms var(--ease),border-color 180ms var(--ease),color 180ms var(--ease),box-shadow 180ms var(--ease)}
+.btn .icon{width:20px;height:20px}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 18px rgba(29,111,255,.28)}
+.btn-primary:hover{background:var(--accent-deep);color:#fff;transform:scale(1.02)}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--edge)}
+.btn-outline:hover{background:var(--mist);color:var(--ink);border-color:#B4B5BA;transform:scale(1.02)}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:#EDEDF0;color:var(--ink);transform:scale(1.02)}
+.btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.btn-ghost-light:hover{background:rgba(255,255,255,.08);color:#fff;transform:scale(1.02)}
+.btn--sm{min-height:40px;padding:0 16px;font-size:.9375rem;gap:8px}
+.btn--sm .icon{width:17px;height:17px}
+.btn--lg{min-height:56px;padding:0 30px;font-size:1.0625rem}
+.btn--block{display:flex;width:100%}
+.btn[disabled]{opacity:.7;cursor:progress;transform:none}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.76);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid transparent;transition:border-color 300ms var(--ease)}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-inner{max-width:1120px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+@media (max-width:360px){.nav .btn-label{display:none}.nav .btn--sm{padding:0 12px}}
+
+/* Hero */
+.hero{padding:56px 0 64px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:center}
+.hero h1 .h1-accent{color:var(--accent);display:block}
+.hero .lead{font-size:1.1875rem;line-height:1.55;max-width:50ch;margin-top:24px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.hero-note{font-size:.9375rem;color:var(--ink-soft);margin-top:16px}
+.live-line{display:flex;align-items:flex-start;gap:10px;margin-top:12px;font-size:.9375rem;color:var(--ink);font-weight:500}
+.live-dot{width:9px;height:9px;border-radius:50%;background:var(--live);flex:none;animation:pulse 2.4s var(--ease) infinite}
+.live-line .live-dot,.pilot-line .live-dot{margin-top:.5em}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}50%{box-shadow:0 0 0 7px rgba(22,163,74,0)}}
+@media (max-width:900px){
+  .hero{padding:32px 0 48px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+}
+@media (max-width:600px){
+  .hero-cta .btn{width:100%}
+}
+
+/* Samtalesimulering */
+.callsim{position:relative;justify-self:end;width:100%;max-width:420px;background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-1),var(--shadow-3);padding:20px 20px 16px;overflow:hidden}
+@media (max-width:900px){.callsim{justify-self:center}}
+.cs-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.cs-who{display:flex;align-items:center;gap:12px;min-width:0}
+.cs-avatar{width:40px;height:40px;border-radius:50%;background:var(--accent-tint);color:var(--accent);display:grid;place-items:center;flex:none}
+.cs-avatar .icon{width:20px;height:20px}
+.cs-who strong{display:block;font-size:.9375rem;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cs-who span{display:block;font-size:.8125rem;color:var(--ink-soft);line-height:1.3}
+.cs-timer{display:inline-flex;align-items:center;gap:8px;font-size:.875rem;font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink)}
+.cs-body{display:flex;flex-direction:column;gap:10px;padding:18px 0 8px;min-height:372px}
+.bubble{max-width:86%;padding:10px 14px;border-radius:18px;font-size:.9375rem;line-height:1.45;opacity:0;transform:translateY(8px);transition:opacity 420ms var(--ease),transform 420ms var(--ease)}
+.bubble--agent{align-self:flex-start;background:var(--mist);color:var(--ink);border-bottom-left-radius:6px}
+.bubble--kunde{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:6px}
+.cs-ended{align-self:center;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px;opacity:0;transition:opacity 420ms var(--ease)}
+.cs-body .in{opacity:1;transform:none}
+.cs-mail{position:absolute;left:12px;right:12px;top:12px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 32px rgba(8,9,10,.16);padding:14px 16px;transform:translateY(-130%);opacity:0;transition:transform 560ms var(--ease),opacity 560ms var(--ease)}
+.cs-mail.in{transform:none;opacity:1}
+.cs-mail-head{display:flex;align-items:center;gap:8px;font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+.cs-mail-head .icon{width:16px;height:16px;color:var(--accent)}
+.cs-mail-head .cs-now{margin-left:auto;text-transform:none;letter-spacing:0;font-weight:500}
+.cs-mail-title{margin-top:6px;font-size:.9375rem;font-weight:600;line-height:1.35;color:var(--ink)}
+.cs-rows{display:grid;gap:2px;margin-top:6px}
+.cs-rows div{display:flex;gap:8px;font-size:.8125rem;line-height:1.5}
+.cs-rows dt{color:var(--ink-soft);min-width:64px}
+.cs-rows dd{color:var(--ink);font-weight:500}
+.cs-tag{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:999px;background:#FEF3C7;color:var(--warm);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.cs-caption{margin-top:8px;padding-top:12px;border-top:1px solid var(--line);font-size:.8125rem;color:var(--ink-soft);text-align:center;max-width:none}
+
+/* Tillitsstripe */
+.strip{padding:0 0 8px}
+.strip-list{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border-top:1px solid var(--line);padding-top:28px}
+.strip-list li{display:flex;align-items:center;gap:12px;font-size:.9375rem;font-weight:500;color:var(--ink)}
+.strip-list .icon{width:22px;height:22px;color:var(--ink-soft)}
+@media (max-width:860px){.strip-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}}
+
+/* Demo */
+.demo{background:var(--ink);color:var(--paper)}
+.demo h2{color:var(--paper)}
+.demo .eyebrow{color:#7FB0FF}
+.demo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:64px;align-items:center}
+.demo-sub{color:rgba(255,255,255,.72);margin-top:20px;font-size:1.125rem}
+.try-list{list-style:none;counter-reset:t;margin-top:36px;display:grid;gap:0}
+.try-list li{counter-increment:t;position:relative;padding:18px 0 18px 48px;border-top:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.72);font-size:1rem;line-height:1.55}
+.try-list li::before{content:counter(t);position:absolute;left:0;top:16px;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;font-size:.875rem;font-weight:600;color:#fff}
+.try-list strong{color:#fff;display:block;margin-bottom:2px}
+.demo-panel{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-panel);padding:48px 32px 36px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.demo-live{display:inline-flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.demo-number{font-size:clamp(2.25rem,5vw,3.25rem);font-weight:600;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:#fff;line-height:1.1}
+.demo-number:hover{color:#fff}
+.demo-btn{min-width:220px}
+.demo-qr{display:none;align-items:center;gap:16px;margin-top:8px;padding:14px 18px 14px 14px;border-radius:14px;background:rgba(255,255,255,.06);text-align:left}
+.demo-qr .qr-box{background:#fff;color:var(--ink);padding:8px;border-radius:8px;flex:none}
+.demo-qr .qr{width:84px;height:84px;display:block}
+.demo-qr span{font-size:.875rem;color:rgba(255,255,255,.72);line-height:1.45;max-width:20ch}
+.demo-note{font-size:.875rem;color:rgba(255,255,255,.55);max-width:40ch}
+@media (min-width:901px){.demo-qr{display:flex}}
+@media (max-width:900px){.demo-grid{grid-template-columns:1fr;gap:40px}.demo-panel{padding:40px 24px 32px}}
+@media (max-width:600px){.demo-btn{width:100%}}
+
+/* Kalkulator */
+.calc-card{margin-top:48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--mist);border-radius:var(--radius-panel);overflow:hidden}
+.calc-inputs{padding:40px;display:flex;flex-direction:column;gap:32px}
+.fr-top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:12px}
+.fr-top label{font-size:1rem;font-weight:500;color:var(--ink);line-height:1.4}
+.fr-top output{font-size:1.375rem;font-weight:600;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;background:transparent;cursor:pointer;margin:0;--p:50%}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:3px;background:linear-gradient(to right,var(--accent) var(--p),#DADADF var(--p))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:28px;height:28px;margin-top:-11px;border-radius:50%;background:#fff;border:0;box-shadow:0 1px 3px rgba(0,0,0,.25),0 3px 8px rgba(0,0,0,.15)}
+input[type=range]::-moz-range-track{height:6px;border-radius:3px;background:#DADADF}
+input[type=range]::-moz-range-progress{height:6px;border-radius:3px;background:var(--accent)}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:0;box-shadow:0 1px 3px rgba(0,0,0,.25),0 3px 8px rgba(0,0,0,.15)}
+input[type=range]:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.calc-assume{font-size:.9375rem;padding-top:24px;border-top:1px solid var(--line)}
+.calc-result{background:var(--ink);color:#fff;padding:40px;display:flex;flex-direction:column;gap:6px}
+.cr-label{color:rgba(255,255,255,.72);font-size:1rem}
+.cr-big{color:#fff;font-size:clamp(2.5rem,5.4vw,3.75rem);font-weight:600;letter-spacing:-0.035em;line-height:1.05;font-variant-numeric:tabular-nums}
+.cr-unit{font-size:1.125rem;font-weight:500;letter-spacing:-0.01em;color:rgba(255,255,255,.72)}
+.cr-year{color:rgba(255,255,255,.72);margin-top:6px}
+.cr-year strong{color:#fff}
+.cr-vs{margin:24px 0;padding:20px 0;border-top:1px solid rgba(255,255,255,.14);border-bottom:1px solid rgba(255,255,255,.14);display:grid;gap:6px}
+.cr-vs div{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.cr-vs div span{color:rgba(255,255,255,.72)}
+.cr-vs div strong{color:#fff;font-size:1.125rem;white-space:nowrap}
+.cr-vs p{color:#fff;font-weight:500}
+.cr-vs p.cr-ratio{color:rgba(255,255,255,.72);font-weight:400;font-size:.9375rem}
+.calc-result .btn{align-self:flex-start}
+@media (max-width:860px){
+  .calc-card{grid-template-columns:1fr}
+  .calc-inputs,.calc-result{padding:28px 24px}
+  .calc-result .btn{align-self:stretch}
+}
+
+/* Slik funker det */
+.steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:48px}
+.step{position:relative;background:var(--mist);border-radius:var(--radius-card);padding:44px 28px 36px;overflow:hidden;transition:transform 240ms var(--ease),box-shadow 240ms var(--ease)}
+.step:hover{transform:translateY(-3px);box-shadow:var(--shadow-1),var(--shadow-2)}
+.step-num{position:absolute;top:6px;right:14px;font-size:6rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:rgba(8,9,10,.05);user-select:none;pointer-events:none}
+.step h3,.step p{position:relative}
+.step p{font-size:1rem;margin-top:10px}
+.steps-note{margin-top:24px;font-size:1rem;font-weight:500;color:var(--ink)}
+.abil-head{margin-top:96px}
+.abilities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 40px;margin-top:40px}
+.ability .icon{width:26px;height:26px;color:var(--ink)}
+.ability p{font-size:1rem;margin-top:14px;max-width:32ch;color:var(--ink-soft)}
+@media (max-width:860px){
+  .steps-grid{grid-template-columns:1fr}
+  .abilities-grid{grid-template-columns:1fr;gap:28px}
+  .ability{display:flex;gap:16px;align-items:flex-start}
+  .ability p{margin-top:0}
+  .abil-head{margin-top:72px}
+}
+
+/* Pris og garantier */
+.offer{background:var(--mist)}
+.offer-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:56px;align-items:stretch}
+.price-card{background:#fff;border-radius:var(--radius-panel);box-shadow:var(--shadow-1),var(--shadow-2);padding:40px;display:flex;flex-direction:column}
+.pilot-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--accent-tint);color:var(--accent-deep);font-size:.8125rem;font-weight:600}
+.price{display:flex;align-items:baseline;gap:10px;margin-top:24px;color:var(--ink)}
+.price-num{font-size:clamp(3.25rem,7vw,4.25rem);font-weight:600;letter-spacing:-0.04em;line-height:1;font-variant-numeric:tabular-nums}
+.price-unit{font-size:1.25rem;font-weight:500;color:var(--ink-soft)}
+.price-sub{margin-top:8px;font-size:1rem}
+.incl{list-style:none;display:grid;gap:12px;margin:28px 0 32px;padding-top:28px;border-top:1px solid var(--line)}
+.incl li{display:flex;gap:12px;align-items:flex-start;color:var(--ink);font-size:1rem;line-height:1.5}
+.incl .icon{width:20px;height:20px;color:var(--live);margin-top:2px}
+.price-fine{font-size:.875rem;margin-top:16px;line-height:1.55}
+.guarantees{display:grid;gap:16px;align-content:start}
+.g-card{background:#fff;border-radius:var(--radius-card);padding:26px 28px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;box-shadow:var(--shadow-1)}
+.g-card .g-ic{grid-row:span 2;width:44px;height:44px;border-radius:12px;background:var(--mist);display:grid;place-items:center;color:var(--ink)}
+.g-card p{font-size:.9375rem;line-height:1.55}
+.why-pilot{padding:22px 28px;border:1px dashed var(--edge);border-radius:var(--radius-card)}
+.why-pilot h3{font-size:1rem}
+.why-pilot p{font-size:.9375rem;margin-top:6px;line-height:1.55}
+.g-card--hero{background:var(--ink)}
+.g-card--hero h3{color:#fff}
+.g-card--hero p{color:rgba(255,255,255,.72)}
+.g-card--hero .g-ic{background:rgba(255,255,255,.1);color:#fff}
+@media (max-width:860px){
+  .offer-grid{grid-template-columns:1fr}
+  .price-card{padding:32px 24px}
+  .g-card{padding:22px 20px}
+}
+
+/* Grunnlegger */
+.founder-grid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:48px;align-items:center;max-width:880px}
+.founder-photo{position:relative;width:168px;height:168px;border-radius:50%;background:linear-gradient(145deg,#EEF3FF,#DCE6FB);display:grid;place-items:center;overflow:hidden;box-shadow:var(--shadow-1),var(--shadow-2)}
+.founder-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.founder-photo span{font-size:3.25rem;font-weight:700;letter-spacing:-0.04em;color:var(--accent-deep)}
+.founder-copy p{margin-top:16px;font-size:1.0625rem}
+.founder-meta{font-size:.875rem!important;color:var(--ink-soft)}
+@media (max-width:700px){
+  .founder-grid{grid-template-columns:1fr;gap:28px}
+  .founder-photo{width:112px;height:112px}
+  .founder-photo span{font-size:2.25rem}
+}
+
+/* Skjema */
+.start-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
+.start-copy > p{margin-top:18px;font-size:1.125rem}
+.next-steps{list-style:none;display:grid;gap:18px;margin-top:36px}
+.next-steps li{display:flex;gap:16px;align-items:flex-start}
+.next-steps li > span{width:32px;height:32px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-size:.875rem;font-weight:600;flex:none}
+.next-steps div{color:var(--ink-soft);font-size:1rem;line-height:1.55;padding-top:4px}
+.pilot-line{display:flex;align-items:flex-start;gap:10px;margin-top:32px;font-size:.9375rem;font-weight:500;color:var(--ink)}
+.lead-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-panel);box-shadow:var(--shadow-1),var(--shadow-3);padding:32px}
+.lf-progress{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.lf-step-label{font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+.lf-step-label b{color:var(--ink)}
+.lf-bars{display:flex;gap:6px}
+.lf-bars i{display:block;width:40px;height:5px;border-radius:3px;background:var(--line);transition:background-color 300ms var(--ease)}
+.lf-bars i.on{background:var(--accent)}
+.lf-step{border:0;min-width:0}
+.lf-step legend,.lf-label{font-size:1.25rem;font-weight:600;letter-spacing:-0.015em;color:var(--ink);margin-bottom:16px;display:block}
+.lf-label{margin-top:28px;font-size:1.0625rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex}
+.chip input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--edge);border-radius:999px;font-size:.9375rem;font-weight:500;color:var(--ink);background:#fff;transition:background-color 160ms var(--ease),border-color 160ms var(--ease),color 160ms var(--ease);user-select:none}
+.chip:hover span{border-color:#9FA0A6}
+.chip input:checked + span{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.lf-field{margin-top:16px}
+.lf-field:first-of-type{margin-top:0}
+.lf-field label,.lf-other label{display:block;font-size:.9375rem;font-weight:500;color:var(--ink);margin-bottom:6px}
+.lf-field .opt{color:var(--ink-soft);font-weight:400}
+.lf-field input,.lf-other input{width:100%;min-height:52px;padding:0 16px;border:1px solid var(--edge);border-radius:12px;font:inherit;font-size:1.0625rem;color:var(--ink);background:#fff;transition:border-color 160ms var(--ease),box-shadow 160ms var(--ease);-webkit-appearance:none;appearance:none}
+.lf-field input:focus,.lf-other input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(29,111,255,.15)}
+.lf-field input[aria-invalid="true"],.lf-other input[aria-invalid="true"]{border-color:var(--danger)}
+.lf-other{margin-top:14px}
+.lf-error{color:var(--danger);font-size:.875rem;margin-top:8px}
+.lf-actions{margin-top:28px}
+.lf-back{display:block;margin:14px auto 0;background:none;border:0;font:inherit;font-size:.9375rem;color:var(--ink-soft);cursor:pointer;padding:8px 12px;min-height:44px}
+.lf-back:hover{color:var(--ink)}
+.lf-fine{font-size:.8125rem;margin-top:12px;text-align:center;max-width:none}
+.lf-fine a{color:var(--ink-soft);text-decoration:underline;text-underline-offset:2px}
+.lf-fail{margin-top:16px;padding:14px 16px;border-radius:12px;background:#FEF3F2;color:#912018;font-size:.9375rem;line-height:1.5}
+.lf-fail a{color:#912018;font-weight:600;text-decoration:underline}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){
+  .start-grid{grid-template-columns:1fr;gap:40px}
+  .lead-card{padding:24px 20px}
+}
+
+/* FAQ */
+.faq-wrap{max-width:780px}
+.faq-list{margin-top:40px;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;background:none;border:0;padding:22px 0;min-height:44px;font:inherit;font-size:1.0625rem;font-weight:600;letter-spacing:-0.01em;color:var(--ink);text-align:left;cursor:pointer}
+.faq-q .chev{width:18px;height:18px;flex:none;color:var(--ink-soft);transition:transform 320ms var(--ease)}
+.faq-item.open .chev{transform:rotate(180deg)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows 320ms var(--ease)}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a-inner{overflow:hidden;min-height:0}
+.faq-a-inner p{padding:0 40px 22px 0;font-size:1rem}
+
+/* Avslutning */
+.final{background:var(--ink);padding:calc(var(--section-pad) + 24px) 0}
+.final h2{color:#fff;max-width:20ch}
+.final-sub{color:rgba(255,255,255,.72);margin-top:20px;font-size:1.125rem}
+.final-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px}
+.final-note{font-size:.875rem;color:rgba(255,255,255,.55);margin-top:22px}
+@media (max-width:600px){.final-cta{flex-direction:column;align-self:stretch}.final-cta .btn{width:100%}}
+
+/* Footer */
+.footer{padding:48px 0 40px}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.footer-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:.9375rem;color:var(--ink-soft)}
+.footer-meta a{color:var(--ink)}
+.footer-meta a:hover{color:var(--accent)}
+.footer-copy{margin-top:36px;font-size:.8125rem;color:var(--ink-soft)}
+@media (max-width:600px){.footer-inner{flex-direction:column}.footer-meta{align-items:flex-start}}
+
+/* Fast knapperad på mobil */
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border-top:1px solid var(--line);transform:translateY(110%);transition:transform 320ms var(--ease)}
+.sticky-cta.show{transform:none}
+.sticky-cta .btn{flex:1;min-height:48px;padding:0 12px;font-size:.9375rem;gap:8px;box-shadow:none}
+@media (max-width:760px){.sticky-cta{display:flex}.footer{padding-bottom:104px}}
+
+/* Samtykke */
+.consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:420px;margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-3);padding:20px}
+.consent p{font-size:.9375rem;color:var(--ink);line-height:1.5}
+.consent p a{color:var(--ink-soft);text-decoration:underline;text-underline-offset:2px}
+.consent-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.consent-actions .btn{min-height:44px;padding:0 12px}
+
+/* Scroll-inn */
+.js [data-reveal]{opacity:0;transform:translateY(18px);transition:opacity 700ms var(--ease),transform 700ms var(--ease);transition-delay:var(--d,0ms)}
+.js [data-reveal].in{opacity:1;transform:none}
+
+@media (max-width:760px){:root{--section-pad:80px}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js [data-reveal]{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3Z"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0"/><path d="M12 17.5V21"/></g></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M3.5 10h17M8 2.5V6M16 2.5V6"/></g></symbol>
+  <symbol id="i-checkc" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></g></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.6V4.5a1 1 0 0 1 1-1h8.1l8 8-9.1 9.1-8-8Z"/><circle cx="8" cy="8" r="1.5"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.5"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.4 7.5 9.5 4.3-1.1 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.8 12.2 2.3 2.3 4.3-4.6"/></g></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h12v17l-2.5-1.5-2 1.5-1.5-1.5-1.5 1.5-2-1.5L6 20.5v-17Z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></g></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V4"/><path d="M5.5 4.5h11l-2.2 4 2.2 4h-11"/></g></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.4"/></g></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></g></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 6l4 4 4-4"/></symbol>
+</svg>
+
+<header class="nav" id="topnav">
+  <div class="nav-inner">
+    <svg class="logo" viewBox="0 0 100 96" role="img" aria-label="TornqvistAI">
+      <text x="0" y="74" font-size="102" font-weight="800" letter-spacing="-4" textLength="99" lengthAdjust="spacingAndGlyphs">AI</text>
+      <text x="0.5" y="95" font-size="18.5" font-weight="600" textLength="98" lengthAdjust="spacing">TORNQVIST</text>
+    </svg>
+    <a class="btn btn-outline btn--sm" data-tel="demo" href="tel:+4769002320"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span class="btn-label">Ring demoen</span></a>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-b="for">KI-telefonagent for håndverkere</p>
+        <h1><span data-b="scene">Du står midt i en jobb.</span> Telefonen ringer. <span class="h1-accent">Hvem svarer?</span></h1>
+        <p class="lead">Med en KI-telefonagent svarer bedriften din alltid. Den snakker norsk, tar imot oppdraget og sender deg alt på e-post. Du ringer tilbake når du har hendene fri.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn--lg" data-tel="demo" href="tel:+4769002320"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Ring demoen: <span data-num="demo">69 00 23 20</span></span></a>
+          <a class="btn btn-outline btn--lg" href="#start" data-goto>Få din egen agent</a>
+        </div>
+        <p class="hero-note"><span data-c="setup">0 kr i oppstart.</span> Ingen faktura før agenten svarer telefonen din.</p>
+        <p class="live-line"><span class="live-dot" aria-hidden="true"></span><span data-live>Agenten svarer døgnet rundt. Ring når du vil.</span></p>
+      </div>
+
+      <div class="callsim" aria-hidden="true">
+        <div class="cs-top">
+          <div class="cs-who">
+            <span class="cs-avatar"><svg class="icon"><use href="#i-wave"/></svg></span>
+            <div><strong data-cs="firma">Tørnqvist Auto</strong><span>Digital assistent svarer</span></div>
+          </div>
+          <span class="cs-timer"><span class="live-dot"></span><span data-timer>00:00</span></span>
+        </div>
+        <div class="cs-body" data-cs-body></div>
+        <div class="cs-mail" data-cs-mail>
+          <div class="cs-mail-head"><svg class="icon"><use href="#i-mail"/></svg><span>Ny henvendelse</span><span class="cs-now">nå</span></div>
+          <p class="cs-mail-title" data-cs="title">Befaring: rar lyd foran ved sving</p>
+          <dl class="cs-rows">
+            <div><dt>Ønsker</dt><dd data-cs="tid">Torsdag kl. 16</dd></div>
+            <div><dt>Navn</dt><dd>Ola</dd></div>
+            <div><dt>Telefon</dt><dd>Fra nummervisning</dd></div>
+          </dl>
+          <span class="cs-tag" data-cs="haster" hidden>Haster</span>
+        </div>
+        <p class="cs-caption">Eksempel. Ring demoen for å høre den på ekte.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Kort fortalt">
+    <div class="wrap">
+      <ul class="strip-list">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg><span>Snakker norsk</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Live på <span data-c="liveDays">7</span>&nbsp;dager</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg><span>0&nbsp;kr i oppstart</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Norsk firma i Fredrikstad</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="demo" class="demo">
+    <div class="wrap demo-grid">
+      <div data-reveal-group>
+        <p class="eyebrow">Test den selv. Det tar ett minutt.</p>
+        <h2>Ring agenten. Lat som du er kunde.</h2>
+        <p class="demo-sub">Demoen er satt opp som et bilverksted, Tørnqvist Auto. Din egen agent får ditt firmanavn, dine tjenester og dine åpningstider.</p>
+        <ol class="try-list">
+          <li><strong>Be om en befaring.</strong>«Bilen lager en rar lyd. Kan jeg komme innom på torsdag?»</li>
+          <li><strong>Spør hva ting koster.</strong>Den oppgir bare priser verkstedet har godkjent, og gjetter aldri.</li>
+          <li><strong>Ombestem deg.</strong>Si tirsdag, og bytt til torsdag. Se om den henger med.</li>
+        </ol>
+      </div>
+      <div class="demo-panel" data-reveal>
+        <span class="demo-live"><span class="live-dot" aria-hidden="true"></span>Agenten er live</span>
+        <a class="demo-number" data-tel="demo" href="tel:+4769002320" data-num="demo">69 00 23 20</a>
+        <a class="btn btn-light btn--lg demo-btn" data-tel="demo" href="tel:+4769002320"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Ring nå</a>
+        <div class="demo-qr"><span class="qr-box"><svg class="qr" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR-kode som ringer demonummeret"><path fill="currentColor" d="M0 0h7v1h-7zM8 0h1v1h-1zM10 0h2v1h-2zM15 0h2v1h-2zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM12 1h1v1h-1zM16 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM15 2h2v1h-2zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM16 3h1v1h-1zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h3v1h-3zM12 4h1v1h-1zM14 4h3v1h-3zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h2v1h-2zM12 5h1v1h-1zM15 5h2v1h-2zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM12 7h2v1h-2zM15 7h2v1h-2zM0 8h1v1h-1zM3 8h6v1h-6zM10 8h1v1h-1zM13 8h1v1h-1zM16 8h2v1h-2zM20 8h1v1h-1zM22 8h3v1h-3zM0 9h3v1h-3zM8 9h2v1h-2zM13 9h1v1h-1zM16 9h2v1h-2zM20 9h2v1h-2zM0 10h2v1h-2zM3 10h4v1h-4zM8 10h2v1h-2zM11 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM17 10h5v1h-5zM24 10h1v1h-1zM4 11h2v1h-2zM7 11h1v1h-1zM9 11h1v1h-1zM12 11h2v1h-2zM16 11h3v1h-3zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM1 12h3v1h-3zM5 12h2v1h-2zM8 12h3v1h-3zM12 12h2v1h-2zM15 12h1v1h-1zM17 12h2v1h-2zM24 12h1v1h-1zM0 13h4v1h-4zM5 13h1v1h-1zM9 13h1v1h-1zM13 13h3v1h-3zM17 13h1v1h-1zM19 13h2v1h-2zM22 13h1v1h-1zM0 14h2v1h-2zM6 14h1v1h-1zM10 14h4v1h-4zM15 14h2v1h-2zM18 14h4v1h-4zM23 14h2v1h-2zM0 15h1v1h-1zM2 15h1v1h-1zM4 15h2v1h-2zM7 15h5v1h-5zM15 15h2v1h-2zM18 15h3v1h-3zM22 15h1v1h-1zM24 15h1v1h-1zM0 16h1v1h-1zM3 16h4v1h-4zM10 16h1v1h-1zM14 16h9v1h-9zM24 16h1v1h-1zM8 17h2v1h-2zM11 17h6v1h-6zM20 17h1v1h-1zM0 18h7v1h-7zM8 18h1v1h-1zM10 18h2v1h-2zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM24 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM8 19h3v1h-3zM12 19h1v1h-1zM14 19h1v1h-1zM16 19h1v1h-1zM20 19h1v1h-1zM23 19h1v1h-1zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM8 20h3v1h-3zM12 20h9v1h-9zM23 20h1v1h-1zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM8 21h3v1h-3zM14 21h2v1h-2zM18 21h2v1h-2zM21 21h2v1h-2zM24 21h1v1h-1zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM9 22h1v1h-1zM12 22h1v1h-1zM14 22h2v1h-2zM20 22h2v1h-2zM23 22h2v1h-2zM0 23h1v1h-1zM6 23h1v1h-1zM10 23h1v1h-1zM14 23h2v1h-2zM17 23h4v1h-4zM22 23h3v1h-3zM0 24h7v1h-7zM8 24h3v1h-3zM13 24h5v1h-5zM20 24h1v1h-1zM24 24h1v1h-1z"/></svg></span><span>Sitter du på PC? Skann koden med mobilen, så ringer den.</span></div>
+        <p class="demo-note">Vanlig norsk nummer. Agenten sier fra at den er en digital assistent. Demosamtaler lagres for å forbedre agenten.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kalkulator" class="calc">
+    <div class="wrap">
+      <div class="section-head" data-reveal-group>
+        <h2>Hva koster ubesvarte samtaler deg?</h2>
+        <p>Kunden som ikke får svar, ringer sjelden tilbake. De ringer neste firma på Google. Regn på ditt eget.</p>
+      </div>
+      <div class="calc-card" data-reveal>
+        <div class="calc-inputs">
+          <div>
+            <div class="fr-top"><label for="calls">Samtaler du ikke rekker å svare på i uka</label><output id="callsOut" for="calls">3</output></div>
+            <input type="range" id="calls" min="1" max="30" step="1" value="3">
+          </div>
+          <div>
+            <div class="fr-top"><label for="jobval">Hva en vanlig jobb er verdt for deg</label><output id="jobOut" for="jobval">5&nbsp;000&nbsp;kr</output></div>
+            <input type="range" id="jobval" min="1000" max="50000" step="500" value="5000">
+          </div>
+          <p class="calc-assume">Vi regner forsiktig: bare 1 av 4 av dem ville blitt en jobb. Det er et grovt anslag basert på dine egne tall.</p>
+        </div>
+        <div class="calc-result" aria-live="polite">
+          <p class="cr-label">Du kan gå glipp av rundt</p>
+          <p class="cr-big"><span id="lossMonth">16&nbsp;500&nbsp;kr</span><span class="cr-unit"> i måneden</span></p>
+          <p class="cr-year">Det er rundt <strong id="lossYear">195&nbsp;000&nbsp;kr</strong> i året.</p>
+          <div class="cr-vs">
+            <div><span>Agenten koster</span><strong><span data-c="price">2&nbsp;990</span>&nbsp;kr/mnd</strong></div>
+            <p id="payback">Redder den én jobb i måneden, har den betalt seg.</p>
+            <p class="cr-ratio" id="ratio"></p>
+          </div>
+          <a class="btn btn-primary btn--lg" href="#start" data-goto data-from-calc>Få din egen agent</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="slik" class="steps">
+    <div class="wrap">
+      <h2 data-reveal>Du gjør nesten ingenting.</h2>
+      <div class="steps-grid" data-reveal-group>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">01</span>
+          <h3>Fortell om bedriften</h3>
+          <p>Du fyller ut et kort skjema med åpningstider, tjenester og hva agenten skal spørre om. Det tar fem minutter.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">02</span>
+          <h3>Vi bygger, du tester</h3>
+          <p>Vi setter opp agenten for din bedrift. Du ringer den og godkjenner den før noe går live.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">03</span>
+          <h3>Viderekoble telefonen</h3>
+          <p>Samtalene du ikke rekker, går til agenten. Du får e-post etter hver samtale og en oppsummering hver dag.</p>
+        </div>
+      </div>
+      <p class="steps-note" data-reveal>Live innen <span data-c="liveDays">7</span>&nbsp;dager. Du beholder nummeret ditt.</p>
+
+      <h2 class="abil-head" data-reveal>Den gjør jobben, og bare den.</h2>
+      <div class="abilities-grid" data-reveal-group>
+        <div class="ability"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg><p>Svarer på norsk, døgnet rundt eller bare når du ikke rekker det</p></div>
+        <div class="ability"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><p>Tar imot bestillinger og befaringer, og noterer hva det gjelder</p></div>
+        <div class="ability"><svg class="icon" aria-hidden="true"><use href="#i-checkc"/></svg><p>Leser dag og tid tilbake til kunden, så tirsdag aldri blir torsdag</p></div>
+        <div class="ability"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><p>Lover aldri priser eller tider du ikke har godkjent</p></div>
+        <div class="ability"><svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg><p>Merker hastesaker, så du ser dem først</p></div>
+        <div class="ability"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Sier fra at den er en digital assistent, slik EU sitt KI-regelverk krever</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pris" class="offer">
+    <div class="wrap">
+      <div class="section-head center" data-reveal-group>
+        <p class="eyebrow">Pilotpris</p>
+        <h2>Én reddet jobb i måneden, så har den betalt seg.</h2>
+      </div>
+      <div class="offer-grid">
+        <div class="price-card" data-reveal>
+          <span class="pilot-badge"><span class="live-dot" aria-hidden="true"></span><span data-pilot>Kun 10 pilotplasser</span></span>
+          <p class="price"><span class="price-num" data-c="price">2&nbsp;990</span><span class="price-unit">kr/mnd</span></p>
+          <p class="price-sub">eks. mva. <span data-c="perday">Under 100 kr dagen.</span></p>
+          <ul class="incl">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>0&nbsp;kr i oppstart</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><span data-c="minutes">750</span> minutter inkludert, rundt <span data-c="calls">250</span> samtaler</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>E-post etter hver samtale og en daglig oppsummering</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Endringer i åpningstider, priser og info er inkludert</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span>Du snakker med meg, ikke et callsenter</span></li>
+          </ul>
+          <a class="btn btn-primary btn--lg btn--block" href="#start" data-goto>Sikre deg en pilotplass</a>
+          <p class="price-fine"><span data-c="binding">6</span> måneders avtale. Ekstra minutter koster <span data-c="overage">3</span>&nbsp;kr per minutt. Prisen er låst hele avtaleperioden. Etter de <span data-c="pilotTotal">10</span> første kundene øker prisen for nye kunder.</p>
+        </div>
+        <div class="guarantees" data-reveal-group>
+          <div class="g-card">
+            <span class="g-ic"><svg class="icon" aria-hidden="true"><use href="#i-receipt"/></svg></span>
+            <h3>Ingen faktura før den svarer</h3>
+            <p>Du betaler ingenting før agenten er live og svarer telefonen din.</p>
+          </div>
+          <div class="g-card g-card--hero">
+            <span class="g-ic"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <h3>Funker-garantien</h3>
+            <p>Gjør ikke agenten jobben, fikser vi det innen 7 dager. Klarer vi ikke det, kan du gå ut av avtalen med en gang.</p>
+          </div>
+          <div class="g-card">
+            <span class="g-ic"><svg class="icon" aria-hidden="true"><use href="#i-checkc"/></svg></span>
+            <h3>Du godkjenner først</h3>
+            <p>Du ringer og tester din egen agent før den går live. Er noe feil, justerer vi det.</p>
+          </div>
+          <div class="why-pilot">
+            <h3>Hvorfor pilotpris?</h3>
+            <p>Vi er nye, og vil bygge opp de første kundene våre ordentlig. Derfor får de <span data-c="pilotTotal">10</span> første en lavere pris enn de som kommer etter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder">
+    <div class="wrap founder-grid" data-reveal-group>
+      <div class="founder-photo"><span aria-hidden="true">AT</span><img src="/assets/adrian.jpg" alt="Adrian Tørnqvist" width="168" height="168" loading="lazy" onerror="this.remove()"></div>
+      <div class="founder-copy">
+        <h2>Hei, jeg er Adrian.</h2>
+        <p>Jeg driver TornqvistAI fra Fredrikstad og setter opp hver agent selv. Jeg har jobbet som elektrikerlærling, så jeg vet hvordan det er når telefonen ringer midt i en jobb og du ikke kan ta den.</p>
+        <p>Fyller du ut skjemaet, er det jeg som ringer deg. Ikke et callsenter.</p>
+        <p class="founder-meta">TornqvistAI · Org.nr. 936&nbsp;953&nbsp;778 · Fredrikstad</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="start">
+    <div class="wrap start-grid">
+      <div class="start-copy" data-reveal-group>
+        <p class="eyebrow">Kom i gang</p>
+        <h2>Få din egen agent.</h2>
+        <p>Fyll ut, så ringer jeg deg innen én arbeidsdag. Samtalen tar 10 minutter, og du forplikter deg ikke til noe.</p>
+        <ol class="next-steps">
+          <li><span>1</span><div><strong>Kort prat, 10 minutter.</strong> Jeg hører hva du trenger og svarer på det du lurer på.</div></li>
+          <li><span>2</span><div><strong>Du fyller ut oppstartsskjemaet.</strong> Åpningstider, tjenester og priser.</div></li>
+          <li><span>3</span><div><strong>Live innen <span data-c="liveDays">7</span>&nbsp;dager.</strong> Første faktura kommer først da.</div></li>
+        </ol>
+        <p class="pilot-line"><span class="live-dot" aria-hidden="true"></span><span data-pilot-line>Pilotpris 2&nbsp;990&nbsp;kr/mnd for de 10 første kundene</span></p>
+      </div>
+
+      <form class="lead-card" id="leadform" novalidate data-reveal>
+        <div class="lf-progress" aria-hidden="true">
+          <span class="lf-step-label">Steg <b data-stepnum>1</b> av 2</span>
+          <span class="lf-bars"><i class="on"></i><i></i></span>
+        </div>
+
+        <fieldset class="lf-step" data-step="1">
+          <legend>Hva jobber du med?</legend>
+          <div class="chips" data-group="bransje">
+            <label class="chip"><input type="radio" name="bransje" value="Bilverksted"><span>Bilverksted</span></label>
+            <label class="chip"><input type="radio" name="bransje" value="Rørlegger"><span>Rørlegger</span></label>
+            <label class="chip"><input type="radio" name="bransje" value="Elektriker"><span>Elektriker</span></label>
+            <label class="chip"><input type="radio" name="bransje" value="Bygg og tømrer"><span>Bygg og tømrer</span></label>
+            <label class="chip"><input type="radio" name="bransje" value="Maler"><span>Maler</span></label>
+            <label class="chip"><input type="radio" name="bransje" value="Trepleie"><span>Trepleie</span></label>
+            <label class="chip"><input type="radio" name="bransje" value="Annet"><span>Annet</span></label>
+          </div>
+          <div class="lf-other" data-other hidden>
+            <label for="bransjeAnnet">Hva slags bedrift har du?</label>
+            <input id="bransjeAnnet" name="bransjeAnnet" autocomplete="off">
+          </div>
+          <p class="lf-error" data-err="bransje" role="alert" hidden>Velg det som passer best.</p>
+
+          <p class="lf-label" id="tapteLabel">Hvor mange samtaler rekker du ikke i uka?</p>
+          <div class="chips" role="radiogroup" aria-labelledby="tapteLabel">
+            <label class="chip"><input type="radio" name="tapte" value="1 til 2"><span>1 til 2</span></label>
+            <label class="chip"><input type="radio" name="tapte" value="3 til 5"><span>3 til 5</span></label>
+            <label class="chip"><input type="radio" name="tapte" value="6 til 10"><span>6 til 10</span></label>
+            <label class="chip"><input type="radio" name="tapte" value="Flere"><span>Flere</span></label>
+            <label class="chip"><input type="radio" name="tapte" value="Vet ikke"><span>Vet ikke</span></label>
+          </div>
+
+          <div class="lf-actions">
+            <button type="button" class="btn btn-primary btn--lg btn--block" data-next>Neste</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="lf-step" data-step="2" hidden>
+          <legend>Hvor skal jeg ringe deg?</legend>
+          <div class="lf-field">
+            <label for="navn">Navn</label>
+            <input id="navn" name="navn" autocomplete="name" autocapitalize="words" required>
+            <p class="lf-error" data-err="navn" role="alert" hidden>Skriv navnet ditt.</p>
+          </div>
+          <div class="lf-field">
+            <label for="telefon">Mobilnummer</label>
+            <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" placeholder="8 siffer" required>
+            <p class="lf-error" data-err="telefon" role="alert" hidden>Skriv et norsk nummer med 8 siffer.</p>
+          </div>
+          <div class="lf-field">
+            <label for="firma">Firma <span class="opt">(valgfritt)</span></label>
+            <input id="firma" name="firma" autocomplete="organization">
+          </div>
+          <div class="lf-field">
+            <label for="epost">E-post <span class="opt" data-epost-opt>(valgfritt)</span></label>
+            <input id="epost" name="epost" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false">
+            <p class="lf-error" data-err="epost" role="alert" hidden>Sjekk at e-postadressen er riktig.</p>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="website">La dette feltet stå tomt</label>
+            <input id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="lf-actions">
+            <button type="submit" class="btn btn-primary btn--lg btn--block" data-submit>Ring meg opp</button>
+          </div>
+          <button type="button" class="lf-back" data-back>Tilbake</button>
+          <p class="lf-fine">Ingen forpliktelse. Vi bruker opplysningene bare til å kontakte deg om agenten. <a href="/personvern/">Personvern</a></p>
+          <div class="lf-fail" data-fail role="alert" hidden>Noe gikk galt med sendingen. Ring meg på <a data-tel="me" href="tel:+4793023747" data-num="me">930 23 747</a> eller send en e-post til <a data-mail href="mailto:adrian.tornqvist@tornqvistai.no">adrian.tornqvist@tornqvistai.no</a>.</div>
+        </fieldset>
+      </form>
+    </div>
+  </section>
+
+  <section id="sporsmal" class="faq">
+    <div class="wrap faq-wrap">
+      <h2 data-reveal>Det du sikkert lurer på.</h2>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Merker kundene at det er en KI?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Ja. Agenten sier fra at den er en digital assistent, slik EU sitt KI-regelverk krever. For kunden er alternativet ofte at ingen svarer i det hele tatt.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Må jeg bytte telefonnummer?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Nei. Kundene ringer samme nummer som før. Samtalene du ikke rekker, blir viderekoblet til agenten. Vi hjelper deg å sette det opp, og det tar et par minutter.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Hva skjer hvis den ikke forstår kunden?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Den gjetter aldri. Den tar en beskjed med navn og hva det gjelder, og nummeret følger med automatisk. Du får alt på e-post og kan ringe tilbake.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Kan den svare bare når jeg ikke rekker det?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Ja. Du velger selv om den skal svare døgnet rundt, bare etter stengetid, eller bare når du ikke tar telefonen.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false"><span>Hvorfor <span data-c="binding">6</span> måneders avtale?</span><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Fordi vi setter opp alt uten oppstartskostnad. Avtalen er det som gjør at vi kan droppe den. Og gjør ikke agenten jobben, gjelder Funker-garantien: da kan du gå ut av avtalen.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false"><span>Hva skjer hvis jeg bruker mer enn <span data-c="minutes">750</span> minutter?</span><svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Da koster ekstra minutter <span data-c="overage">3</span>&nbsp;kr per minutt. <span data-c="minutes">750</span> minutter er rundt <span data-c="calls">250</span> samtaler i måneden.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Hvor lang tid tar det?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Agenten er live innen <span data-c="liveDays">7</span>&nbsp;dager etter at du har fylt ut oppstartsskjemaet. Du tester den før den går live, og første faktura kommer først da.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Hva med personvern?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Samtalene behandles i tråd med GDPR. Du får en databehandleravtale, og opplysningene brukes bare til å gi deg beskjed om henvendelsen.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">Passer dette for min bedrift?<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="faq-a"><div class="faq-a-inner"><p>Ringer kundene dine for å bestille time, avtale befaring eller legge igjen en beskjed, så ja. Agenten settes opp for det du faktisk gjør.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap center" data-reveal-group>
+      <h2>Neste gang telefonen ringer, svarer noen.</h2>
+      <p class="final-sub">Hør selv hvordan den høres ut, eller la meg ringe deg.</p>
+      <div class="final-cta">
+        <a class="btn btn-primary btn--lg" href="#start" data-goto>Ring meg opp</a>
+        <a class="btn btn-ghost-light btn--lg" data-tel="demo" href="tel:+4769002320"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Ring demoen</a>
+      </div>
+      <p class="final-note" data-pilot-final>Pilotpris 2&nbsp;990&nbsp;kr/mnd for de 10 første. 0&nbsp;kr i oppstart.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <svg class="logo" viewBox="0 0 100 96" role="img" aria-label="TornqvistAI" style="height:44px">
+      <text x="0" y="74" font-size="102" font-weight="800" letter-spacing="-4" textLength="99" lengthAdjust="spacingAndGlyphs">AI</text>
+      <text x="0.5" y="95" font-size="18.5" font-weight="600" textLength="98" lengthAdjust="spacing">TORNQVIST</text>
+    </svg>
+    <div class="footer-meta">
+      <a data-mail href="mailto:adrian.tornqvist@tornqvistai.no">adrian.tornqvist@tornqvistai.no</a>
+      <span>Org.nr. 936&nbsp;953&nbsp;778 · Fredrikstad</span>
+      <a href="/personvern/">Personvern</a>
+    </div>
+  </div>
+  <div class="wrap footer-copy">© 2026 TornqvistAI</div>
+</footer>
+
+<div class="sticky-cta" data-sticky aria-hidden="true">
+  <a class="btn btn-outline" data-tel="demo" href="tel:+4769002320" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Ring demoen</a>
+  <a class="btn btn-primary" href="#start" data-goto tabindex="-1">Få din egen agent</a>
+</div>
+
+<div class="consent" data-consent role="dialog" aria-live="polite" aria-label="Informasjonskapsler" hidden>
+  <p>Kan vi bruke informasjonskapsler fra Meta for å se hvilke annonser som virker? Vi bruker dem ikke til noe annet. <a href="/personvern/">Les mer</a></p>
+  <div class="consent-actions">
+    <button type="button" class="btn btn-outline" data-consent-no>Nei takk</button>
+    <button type="button" class="btn btn-outline" data-consent-yes>Ja, greit</button>
+  </div>
+</div>
+
+<script src="/ring/config.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Innstillinger ---------- */
+  var DEF = {
+    demoNumber: "+47 69 00 23 20", myNumber: "+47 930 23 747", email: "adrian.tornqvist@tornqvistai.no",
+    price: 2990, minutes: 750, overage: 3, bindingMonths: 6, liveDays: 7, pilotTotal: 10, pilotTaken: 0,
+    googleForm: { action: "", fields: {} }, metaPixelId: ""
+  };
+  var C = Object.assign({}, DEF, window.TQ_CONFIG || {});
+  C.googleForm = Object.assign({ action: "", fields: {} }, C.googleForm || {});
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var nf = new Intl.NumberFormat("nb-NO");
+  var num = function (n) { return nf.format(Math.round(n)).replace(/\s/g, " "); };
+  var kr = function (n) { return num(n) + " kr"; };
+  var telHref = function (n) { return "tel:" + String(n).replace(/[^\d+]/g, ""); };
+  var localNum = function (n) { return String(n).replace(/^\+47\s*/, ""); };
+  var reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var params = new URLSearchParams(location.search);
+
+  function lsGet(k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} }
+  function ssSet(k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) {} }
+
+  /* ---------- Tall og kontaktinfo fra innstillingene ---------- */
+  $$('[data-tel="demo"]').forEach(function (a) { a.href = telHref(C.demoNumber); });
+  $$('[data-tel="me"]').forEach(function (a) { a.href = telHref(C.myNumber); });
+  $$('[data-num="demo"]').forEach(function (el) { el.textContent = localNum(C.demoNumber); });
+  $$('[data-num="me"]').forEach(function (el) { el.textContent = localNum(C.myNumber); });
+  $$("[data-mail]").forEach(function (a) { a.href = "mailto:" + C.email; a.textContent = C.email; });
+
+  var perDay = C.price * 12 / 365;
+  var vals = {
+    price: num(C.price), minutes: num(C.minutes), overage: num(C.overage), binding: C.bindingMonths,
+    liveDays: C.liveDays, pilotTotal: C.pilotTotal, calls: num(Math.round(C.minutes / 3 / 10) * 10),
+    perday: perDay < 100 ? "Under 100 kr dagen." : "Rundt " + Math.round(perDay) + " kr dagen."
+  };
+  $$("[data-c]").forEach(function (el) { var k = el.getAttribute("data-c"); if (vals[k] != null) el.textContent = vals[k]; });
+
+  var left = Math.max(0, C.pilotTotal - C.pilotTaken);
+  var pilotBadge = left === 0 ? "Pilotplassene er fylt opp" : C.pilotTaken > 0 ? left + " av " + C.pilotTotal + " pilotplasser igjen" : "Kun " + C.pilotTotal + " pilotplasser";
+  $$("[data-pilot]").forEach(function (el) { el.textContent = pilotBadge; });
+  var pilotLine = C.pilotTaken > 0 && left > 0 ? "Pilotpris " + kr(C.price) + "/mnd. " + left + " av " + C.pilotTotal + " plasser igjen" : "Pilotpris " + kr(C.price) + "/mnd for de " + C.pilotTotal + " første kundene";
+  $$("[data-pilot-line]").forEach(function (el) { el.textContent = pilotLine; });
+  $$("[data-pilot-final]").forEach(function (el) { el.textContent = "Pilotpris " + kr(C.price) + "/mnd for de " + C.pilotTotal + " første. 0 kr i oppstart."; });
+
+  /* ---------- Bransje fra annonselenken (?b=rorlegger) ---------- */
+  var BR = {
+    verksted: {
+      label: "Bilverksted", eyebrow: "For bilverksteder", scene: "Du ligger under en bil.", firma: "Tørnqvist Auto", jobb: 4000,
+      lines: [["a", "Hei, du snakker med Grace, en digital assistent hos Tørnqvist Auto. Hva kan jeg hjelpe deg med?"], ["k", "Bilen lager en rar lyd foran når jeg svinger."], ["a", "Da setter vi opp en befaring, så ser mekanikeren på bilen. Hvilken dag passer for deg?"], ["k", "Torsdag, etter jobb. Rundt fire?"], ["a", "Da noterer jeg befaring torsdag klokken 16. Noen fra verkstedet bekrefter tiden."]],
+      title: "Befaring: rar lyd foran ved sving", tid: "Torsdag kl. 16"
+    },
+    rorlegger: {
+      label: "Rørlegger", eyebrow: "For rørleggere", scene: "Du ligger under en vask.", firma: "Tørnqvist Rør", jobb: 6000, haster: true,
+      lines: [["a", "Hei, du snakker med Grace, en digital assistent hos Tørnqvist Rør. Hva kan jeg hjelpe deg med?"], ["k", "Det drypper under kjøkkenvasken, og det blir verre."], ["a", "Det høres ut som noe vi bør se på raskt. Hvilken adresse gjelder det?"], ["k", "Storgata 12. Kan noen komme i morgen?"], ["a", "Jeg har notert det og merket det som hastesak. En rørlegger ringer deg tilbake så fort som mulig."]],
+      title: "Lekkasje under kjøkkenvask", tid: "Besøk i morgen"
+    },
+    elektriker: {
+      label: "Elektriker", eyebrow: "For elektrikere", scene: "Du står på en stige.", firma: "Tørnqvist Elektro", jobb: 5000,
+      lines: [["a", "Hei, du snakker med Grace, en digital assistent hos Tørnqvist Elektro. Hva kan jeg hjelpe deg med?"], ["k", "Jeg vil ha lader til elbilen. Kan noen komme og se på det?"], ["a", "Det kan vi. Da avtaler vi en befaring, så får du et tilbud etterpå. Hvilken dag passer?"], ["k", "Tirsdag formiddag, hvis det går."], ["a", "Da noterer jeg befaring tirsdag formiddag. Noen fra oss bekrefter tiden."]],
+      title: "Befaring: lader til elbil", tid: "Tirsdag formiddag"
+    },
+    bygg: {
+      label: "Bygg og tømrer", eyebrow: "For byggfirma og tømrere", scene: "Du står på et tak.", firma: "Tørnqvist Bygg", jobb: 15000,
+      lines: [["a", "Hei, du snakker med Grace, en digital assistent hos Tørnqvist Bygg. Hva kan jeg hjelpe deg med?"], ["k", "Vi vil bygge ny terrasse i vår. Kan dere gi et tilbud?"], ["a", "Gjerne. Da avtaler vi en befaring, så får du et tilbud etterpå. Når passer det?"], ["k", "Neste uke, en ettermiddag."], ["a", "Da noterer jeg befaring neste uke på ettermiddagen. Vi ringer og bekrefter tiden."]],
+      title: "Befaring: ny terrasse", tid: "Neste uke, ettermiddag"
+    },
+    maler: {
+      label: "Maler", eyebrow: "For malere", scene: "Du står på stillaset.", firma: "Tørnqvist Maler", jobb: 8000,
+      lines: [["a", "Hei, du snakker med Grace, en digital assistent hos Tørnqvist Maler. Hva kan jeg hjelpe deg med?"], ["k", "Vi skal male huset utvendig til sommeren. Har dere kapasitet?"], ["a", "Det ser vi på. Da avtaler vi en befaring, så får du et tilbud. Hvilken dag passer?"], ["k", "Lørdag hadde vært best."], ["a", "Da noterer jeg at du ønsker befaring på lørdag. Noen fra oss ringer og bekrefter."]],
+      title: "Befaring: utvendig maling av hus", tid: "Lørdag"
+    },
+    trepleie: {
+      label: "Trepleie", eyebrow: "For trepleiere", scene: "Du henger i et tre.", firma: "Tørnqvist Trepleie", jobb: 6000,
+      lines: [["a", "Hei, du snakker med Grace, en digital assistent hos Tørnqvist Trepleie. Hva kan jeg hjelpe deg med?"], ["k", "Vi har en stor gran som må felles før vinteren."], ["a", "Da setter vi opp en befaring, så ser vi på treet og gir deg en pris. Hvilken dag passer?"], ["k", "Fredag går fint."], ["a", "Da noterer jeg befaring på fredag. Noen fra oss bekrefter tiden."]],
+      title: "Befaring: felling av stor gran", tid: "Fredag"
+    }
+  };
+  var ALIAS = { verksted: "verksted", bilverksted: "verksted", auto: "verksted", bil: "verksted", mekaniker: "verksted",
+    rorlegger: "rorlegger", ror: "rorlegger", vvs: "rorlegger", elektriker: "elektriker", elektro: "elektriker", el: "elektriker",
+    bygg: "bygg", tomrer: "bygg", snekker: "bygg", byggfirma: "bygg", maler: "maler", malerfirma: "maler",
+    trepleie: "trepleie", arborist: "trepleie", trefelling: "trepleie" };
+  function norm(s) { return String(s || "").toLowerCase().replace(/ø/g, "o").replace(/æ/g, "ae").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z]/g, ""); }
+  var bKey = ALIAS[norm(params.get("b") || params.get("bransje"))] || null;
+  var B = bKey ? BR[bKey] : null;
+  var SIM = B || BR.verksted;
+
+  if (B) {
+    $$('[data-b="eyebrow"],[data-b="for"]').forEach(function (el) { el.textContent = B.eyebrow; });
+    $$('[data-b="scene"]').forEach(function (el) { el.textContent = B.scene; });
+  }
+
+  /* ---------- Levende klokke i hero ---------- */
+  var liveEl = $("[data-live]");
+  function tick() {
+    if (!liveEl || !window.Intl || !Intl.DateTimeFormat.prototype.formatToParts) return;
+    try {
+      var parts = new Intl.DateTimeFormat("nb-NO", { timeZone: "Europe/Oslo", weekday: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+      var g = function (t) { var p = parts.filter(function (x) { return x.type === t; })[0]; return p ? p.value : ""; };
+      liveEl.textContent = "Agenten svarer også nå: " + g("weekday") + " kl. " + g("hour") + ":" + g("minute") + ".";
+    } catch (e) {}
+  }
+  tick(); setInterval(tick, 20000);
+
+  /* ---------- Samtalesimulering ---------- */
+  var csBody = $("[data-cs-body]"), csMail = $("[data-cs-mail]"), csTimer = $("[data-timer]");
+  if (csBody) {
+    $$('[data-cs="firma"]').forEach(function (el) { el.textContent = SIM.firma; });
+    $('[data-cs="title"]').textContent = SIM.title;
+    $('[data-cs="tid"]').textContent = SIM.tid;
+    if (SIM.haster) $('[data-cs="haster"]').hidden = false;
+    SIM.lines.forEach(function (l) {
+      var d = document.createElement("div");
+      d.className = "bubble " + (l[0] === "a" ? "bubble--agent" : "bubble--kunde");
+      d.textContent = l[1];
+      csBody.appendChild(d);
+    });
+    var ended = document.createElement("div");
+    ended.className = "cs-ended"; ended.textContent = "Samtalen er avsluttet";
+    csBody.appendChild(ended);
+
+    var items = $$(".bubble, .cs-ended", csBody), timers = [], secs = 0, clock = null;
+    var showTime = function () { csTimer.textContent = String(Math.floor(secs / 60)).padStart(2, "0") + ":" + String(secs % 60).padStart(2, "0"); };
+    var run = function () {
+      timers.forEach(clearTimeout); timers = [];
+      items.forEach(function (el) { el.classList.remove("in"); }); csMail.classList.remove("in");
+      secs = 0; showTime(); clearInterval(clock);
+      clock = setInterval(function () { secs++; showTime(); }, 180);
+      var t = 500;
+      items.forEach(function (el) {
+        timers.push(setTimeout(function () { el.classList.add("in"); }, t));
+        t += el.classList.contains("bubble--agent") ? 2300 : 1700;
+      });
+      timers.push(setTimeout(function () { clearInterval(clock); }, t - 1500));
+      timers.push(setTimeout(function () { csMail.classList.add("in"); }, t - 900));
+      timers.push(setTimeout(run, t + 6500));
+    };
+    if (reduced) {
+      items.forEach(function (el) { el.classList.add("in"); }); csMail.classList.add("in"); secs = 47; showTime();
+    } else if ("IntersectionObserver" in window) {
+      var started = false;
+      new IntersectionObserver(function (es, o) { if (!started && es[0].isIntersecting) { started = true; run(); o.disconnect(); } }, { threshold: 0.3 }).observe(csBody);
+    } else { run(); }
+  }
+
+  /* ---------- Kalkulator ---------- */
+  var callsEl = $("#calls"), jobEl = $("#jobval"), kalk = "";
+  function paint(r) { r.style.setProperty("--p", ((r.value - r.min) / (r.max - r.min) * 100) + "%"); }
+  function calc() {
+    var calls = +callsEl.value, job = +jobEl.value;
+    $("#callsOut").textContent = calls;
+    $("#jobOut").textContent = kr(job);
+    var month = calls * 52 / 12 * 0.25 * job;
+    var m = Math.max(500, Math.round(month / 500) * 500);
+    $("#lossMonth").textContent = kr(m);
+    $("#lossYear").textContent = kr(Math.round(month * 12 / 1000) * 1000);
+    var n = Math.ceil(C.price / job);
+    $("#payback").textContent = n <= 1 ? "Redder den én jobb i måneden, har den betalt seg." : "Redder den " + n + " jobber i måneden, har den betalt seg.";
+    var ratio = month / C.price;
+    $("#ratio").textContent = ratio >= 1.5 ? "Tapet ditt er " + (ratio >= 10 ? Math.round(ratio) : String(Math.round(ratio * 10) / 10).replace(".", ",")) + " ganger så stort som prisen på agenten." : "";
+    paint(callsEl); paint(jobEl);
+    kalk = calls + " ubesvarte/uke, jobb " + job + " kr, anslått tap " + m + " kr/mnd";
+  }
+  if (callsEl && jobEl) {
+    if (B) jobEl.value = B.jobb;
+    callsEl.addEventListener("input", calc); jobEl.addEventListener("input", calc);
+    calc();
+  }
+
+  /* ---------- Skjema ---------- */
+  var form = $("#leadform");
+  function setStep(n) {
+    $$(".lf-step", form).forEach(function (f) { f.hidden = +f.getAttribute("data-step") !== n; });
+    $("[data-stepnum]").textContent = n;
+    $$(".lf-bars i").forEach(function (b, i) { b.classList.toggle("on", i < n); });
+  }
+  function pick(name, value) {
+    var r = $$('input[name="' + name + '"]', form).filter(function (x) { return x.value === value; })[0];
+    if (r) { r.checked = true; r.dispatchEvent(new Event("change", { bubbles: true })); }
+  }
+  function picked(name) { var r = $('input[name="' + name + '"]:checked', form); return r ? r.value : ""; }
+  function err(key, on) {
+    var p = $('[data-err="' + key + '"]', form); if (p) p.hidden = !on;
+    var inp = key === "bransje" ? null : $("#" + key);
+    if (inp) inp.setAttribute("aria-invalid", on ? "true" : "false");
+  }
+  if (B) pick("bransje", B.label);
+
+  form.addEventListener("change", function (e) {
+    if (e.target.name === "bransje") {
+      $("[data-other]").hidden = e.target.value !== "Annet";
+      err("bransje", false);
+    }
+  });
+
+  $$("[data-from-calc]").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var c = +callsEl.value;
+      pick("tapte", c <= 2 ? "1 til 2" : c <= 5 ? "3 til 5" : c <= 10 ? "6 til 10" : "Flere");
+    });
+  });
+
+  $("[data-next]", form).addEventListener("click", function () {
+    if (!picked("bransje")) { err("bransje", true); return; }
+    setStep(2);
+    track("SkjemaSteg2", true);
+    setTimeout(function () { var n = $("#navn"); if (n && window.innerWidth > 760) n.focus(); }, 60);
+  });
+  $("[data-back]", form).addEventListener("click", function () { setStep(1); });
+
+  function normPhone(v) {
+    var d = String(v || "").replace(/\D/g, "");
+    if (d.indexOf("0047") === 0) d = d.slice(4); else if (d.length === 10 && d.indexOf("47") === 0) d = d.slice(2);
+    return d;
+  }
+  function prettyPhone(d) { return /^[49]/.test(d) ? d.replace(/(\d{3})(\d{2})(\d{3})/, "$1 $2 $3") : d.replace(/(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4"); }
+  ["navn", "telefon", "epost"].forEach(function (k) { $("#" + k).addEventListener("input", function () { err(k, false); }); });
+  if (C.requireEmail) { var eo = $("[data-epost-opt]"); if (eo) eo.hidden = true; $("#epost").required = true; }
+
+  function kilde() {
+    var out = [];
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) { var v = params.get(k); if (v) out.push(k.replace("utm_", "") + "=" + v); });
+    if (params.get("fbclid")) out.push("fbclid=ja");
+    out.push("side=/ring" + (bKey ? "?b=" + bKey : ""));
+    if (kalk) out.push("kalkulator: " + kalk);
+    return out.join(" | ");
+  }
+
+  function send(data) {
+    var gf = C.googleForm, f = gf.fields || {};
+    if (!gf.action || !f.navn || !f.telefon) return Promise.reject(new Error("Skjemaet er ikke koblet til Google Forms ennå"));
+    var body = new URLSearchParams();
+    Object.keys(f).forEach(function (k) { if (f[k] && data[k] != null) body.append(f[k], data[k]); });
+    body.append("fvv", "1"); body.append("pageHistory", "0");
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var to = ctrl ? setTimeout(function () { ctrl.abort(); }, 12000) : null;
+    return fetch(gf.action, { method: "POST", mode: "no-cors", body: body, signal: ctrl ? ctrl.signal : undefined })
+      .then(function () { if (to) clearTimeout(to); });
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var navn = $("#navn").value.trim(), tel = normPhone($("#telefon").value), epost = $("#epost").value.trim(), ok = true;
+    if (navn.length < 2) { err("navn", true); ok = false; }
+    if (!/^[2-9]\d{7}$/.test(tel)) { err("telefon", true); ok = false; }
+    if ((epost || C.requireEmail) && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(epost)) { err("epost", true); ok = false; }
+    if (!ok) { var bad = $('[aria-invalid="true"]', form); if (bad) bad.focus(); return; }
+
+    var br = picked("bransje");
+    if (br === "Annet") { var a = $("#bransjeAnnet").value.trim(); br = a ? "Annet: " + a : "Annet"; }
+    var data = { navn: navn, epost: epost, firma: $("#firma").value.trim(), telefon: "+47 " + prettyPhone(tel), bransje: br, tapte: picked("tapte") || "Ikke oppgitt", kilde: kilde() };
+
+    var btn = $("[data-submit]", form), label = btn.innerHTML;
+    btn.disabled = true; btn.innerHTML = '<span class="spinner" aria-hidden="true"></span>Sender';
+    $("[data-fail]", form).hidden = true;
+
+    var done = function () {
+      ssSet("tqai-lead", JSON.stringify({ fornavn: navn.split(/\s+/)[0], t: Date.now() }));
+      location.assign("/ring/takk/");
+    };
+    if ($("#website").value) { done(); return; }
+    send(data).then(done).catch(function (er) {
+      if (window.console) console.warn("[TQAI] Sending feilet:", er && er.message);
+      btn.disabled = false; btn.innerHTML = label;
+      $("[data-fail]", form).hidden = false;
+    });
+  });
+
+  /* ---------- Sporing med samtykke (Meta Pixel) ---------- */
+  var KEY = "tqai-consent", banner = $("[data-consent]");
+  function loadPixel() {
+    if (!C.metaPixelId || window.fbq) return;
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", C.metaPixelId);
+    window.fbq("track", "PageView");
+  }
+  function track(ev, custom) { if (window.fbq) window.fbq(custom ? "trackCustom" : "track", ev); }
+  if (C.metaPixelId) {
+    var choice = lsGet(KEY);
+    if (choice === "yes") loadPixel();
+    else if (choice !== "no") banner.hidden = false;
+  }
+  $("[data-consent-yes]").addEventListener("click", function () { lsSet(KEY, "yes"); banner.hidden = true; loadPixel(); updateSticky(); });
+  $("[data-consent-no]").addEventListener("click", function () { lsSet(KEY, "no"); banner.hidden = true; updateSticky(); });
+  $$('[data-tel="demo"]').forEach(function (a) { a.addEventListener("click", function () { track("Contact"); }); });
+
+  /* ---------- Fast knapperad på mobil ---------- */
+  var sticky = $("[data-sticky]"), heroCta = $(".hero-cta"), heroGone = false, formVisible = false, finalVisible = false;
+  function updateSticky() {
+    var show = heroGone && !formVisible && !finalVisible && banner.hidden;
+    sticky.classList.toggle("show", show);
+    sticky.setAttribute("aria-hidden", show ? "false" : "true");
+    $$("a", sticky).forEach(function (a) { a.tabIndex = show ? 0 : -1; });
+  }
+  if ("IntersectionObserver" in window && sticky) {
+    new IntersectionObserver(function (es) {
+      heroGone = !es[0].isIntersecting && es[0].boundingClientRect.top < 0;
+      updateSticky();
+    }, { threshold: 0 }).observe(heroCta);
+    var io2 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.target.id === "start") formVisible = e.isIntersecting; else finalVisible = e.isIntersecting; });
+      updateSticky();
+    }, { threshold: 0.15 });
+    io2.observe($("#start")); io2.observe($(".final"));
+  }
+
+  /* ---------- Navigasjon, animasjoner og FAQ ---------- */
+  var nav = $("#topnav");
+  var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 16); };
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  if (!reduced && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+    $$("[data-reveal-group]").forEach(function (g) { Array.prototype.slice.call(g.children).forEach(function (c, i) { c.setAttribute("data-reveal", ""); c.style.setProperty("--d", (i * 70) + "ms"); }); });
+    $$("[data-reveal]").forEach(function (el) { io.observe(el); });
+  } else {
+    $$("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
+  }
+
+  $$(".faq-q").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.closest(".faq-item"), open = item.classList.contains("open");
+      $$(".faq-item.open").forEach(function (o) { o.classList.remove("open"); $(".faq-q", o).setAttribute("aria-expanded", "false"); });
+      if (!open) { item.classList.add("open"); btn.setAttribute("aria-expanded", "true"); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
