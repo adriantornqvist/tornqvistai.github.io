@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Takk! Jeg ringer deg snart | TornqvistAI</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='80' font-family='Inter,-apple-system,sans-serif' font-size='86' font-weight='800' letter-spacing='-3' text-anchor='middle' fill='%2308090A'%3EAI%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="/assets/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Inter";font-style:normal;font-weight:100 900;font-display:swap;src:url("/assets/inter-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--ink:#08090A;--ink-soft:#55565A;--paper:#FFFFFF;--mist:#F4F4F6;--line:#E5E5E8;--edge:#C9CACE;--accent:#1D6FFF;--accent-deep:#1258D6;--live:#16A34A;--ease:cubic-bezier(0.22,1,0.36,1);--shadow-1:0 1px 2px rgba(0,0,0,.04);--shadow-2:0 8px 24px rgba(0,0,0,.06)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:1.0625rem;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;text-wrap:pretty}
+a{color:var(--accent);text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,p,ol{margin:0;padding:0}
+p{color:var(--ink-soft)}
+strong{color:var(--ink);font-weight:600}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.nav{padding:10px 0;border-bottom:1px solid var(--line)}
+.nav .wrap{max-width:1120px}
+.logo{display:block;height:36px;width:auto;color:var(--ink)}
+.logo text{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:currentColor}
+main{padding:72px 0 96px}
+.ok{width:64px;height:64px;border-radius:50%;background:#E8F7EE;color:var(--live);display:grid;place-items:center;margin-bottom:28px}
+.ok svg{width:32px;height:32px}
+h1{font-size:clamp(2.125rem,5.5vw,3.25rem);font-weight:600;line-height:1.08;letter-spacing:-0.035em}
+.sub{margin-top:20px;font-size:1.1875rem;line-height:1.55;max-width:52ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;font:inherit;font-size:1rem;font-weight:500;cursor:pointer;border:1px solid transparent;white-space:nowrap;transition:transform 180ms var(--ease),background-color 180ms var(--ease)}
+.btn svg{width:20px;height:20px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-deep);color:#fff;transform:scale(1.02)}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--edge)}
+.btn-outline:hover{background:var(--mist);color:var(--ink);transform:scale(1.02)}
+.contact{margin-top:32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px;border-radius:16px;background:var(--mist)}
+.contact p{flex:1 1 260px;font-size:1rem;color:var(--ink)}
+.steps{list-style:none;margin-top:56px;border-top:1px solid var(--line)}
+.steps li{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.steps li > span{width:32px;height:32px;border-radius:50%;background:var(--mist);display:grid;place-items:center;font-size:.875rem;font-weight:600;flex:none}
+.steps div{padding-top:3px;color:var(--ink-soft)}
+h2{font-size:1.5rem;font-weight:600;letter-spacing:-0.02em;margin-top:56px}
+.demo-box{margin-top:16px;padding:28px;border-radius:20px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.demo-box p{color:rgba(255,255,255,.72);flex:1 1 260px}
+.demo-box strong{color:#fff;display:block;font-size:1.125rem}
+.btn-light{background:#fff;color:var(--ink)}
+.btn-light:hover{background:#EDEDF0;color:var(--ink);transform:scale(1.02)}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:.875rem;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;max-width:1120px}
+footer a{color:var(--ink)}
+@media (max-width:600px){.contact .btn,.demo-box .btn{width:100%}main{padding:48px 0 72px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a href="/ring/" aria-label="TornqvistAI, tilbake"><svg class="logo" viewBox="0 0 100 96" role="img" aria-label="TornqvistAI">
+      <text x="0" y="74" font-size="102" font-weight="800" letter-spacing="-4" textLength="99" lengthAdjust="spacingAndGlyphs">AI</text>
+      <text x="0.5" y="95" font-size="18.5" font-weight="600" textLength="98" lengthAdjust="spacing">TORNQVIST</text>
+    </svg></a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="ok" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+    <h1><span data-hello>Takk!</span> Jeg ringer deg innen én arbeidsdag.</h1>
+    <p class="sub">Samtalen tar rundt 10 minutter. Jeg hører hva du trenger, og du får svar på det du lurer på. Ingen forpliktelse.</p>
+
+    <div class="contact">
+      <p>Jeg ringer fra <strong data-num="me">930 23 747</strong>. Lagre nummeret, så vet du at det er meg.</p>
+      <button type="button" class="btn btn-outline" data-vcard>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+        Lagre kontakten
+      </button>
+    </div>
+
+    <ol class="steps">
+      <li><span>1</span><div><strong>Kort prat.</strong> Vi finner ut om agenten passer for deg, og hva den skal gjøre.</div></li>
+      <li><span>2</span><div><strong>Oppstartsskjema.</strong> Du sender åpningstider, tjenester og priser. Det tar fem minutter.</div></li>
+      <li><span>3</span><div><strong>Live innen <span data-c="liveDays">7</span>&nbsp;dager.</strong> Du tester agenten først. Første faktura kommer først når den svarer telefonen din.</div></li>
+    </ol>
+
+    <h2>Mens du venter</h2>
+    <div class="demo-box">
+      <p><strong>Ring demoen en gang til.</strong>Prøv noe nytt. Spør om en EU-kontroll, eller snakk engelsk.</p>
+      <a class="btn btn-light" data-tel="demo" href="tel:+4769002320">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z"/></svg>
+        <span data-num="demo">69 00 23 20</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>TornqvistAI · Org.nr. 936&nbsp;953&nbsp;778 · Fredrikstad</span>
+    <a href="/personvern/">Personvern</a>
+  </div>
+</footer>
+
+<script src="/ring/config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var C = Object.assign({ demoNumber: "+47 69 00 23 20", myNumber: "+47 930 23 747", myName: "Adrian Tørnqvist", email: "adrian.tornqvist@tornqvistai.no", liveDays: 7, metaPixelId: "" }, window.TQ_CONFIG || {});
+  var $ = function (s) { return document.querySelector(s); };
+  var $$ = function (s) { return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  var telHref = function (n) { return "tel:" + String(n).replace(/[^\d+]/g, ""); };
+  var localNum = function (n) { return String(n).replace(/^\+47\s*/, ""); };
+
+  $$('[data-tel="demo"]').forEach(function (a) { a.href = telHref(C.demoNumber); });
+  $$('[data-num="demo"]').forEach(function (el) { el.textContent = localNum(C.demoNumber); });
+  $$('[data-num="me"]').forEach(function (el) { el.textContent = localNum(C.myNumber); });
+  $$('[data-c="liveDays"]').forEach(function (el) { el.textContent = C.liveDays; });
+
+  var lead = null;
+  try { lead = JSON.parse(window.sessionStorage.getItem("tqai-lead") || "null"); } catch (e) {}
+  if (lead && lead.fornavn) {
+    var name = String(lead.fornavn).slice(0, 40);
+    $("[data-hello]").textContent = "Takk, " + name.charAt(0).toUpperCase() + name.slice(1) + "!";
+  }
+
+  $("[data-vcard]").addEventListener("click", function () {
+    var parts = String(C.myName).split(" ");
+    var last = parts.length > 1 ? parts.pop() : "";
+    var vcf = ["BEGIN:VCARD", "VERSION:3.0", "N:" + last + ";" + parts.join(" ") + ";;;", "FN:" + C.myName, "ORG:TornqvistAI",
+      "TEL;TYPE=CELL:" + String(C.myNumber).replace(/[^\d+]/g, ""), "EMAIL:" + C.email, "URL:https://tornqvistai.no", "END:VCARD"].join("\r\n");
+    var blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = "Adrian-TornqvistAI.vcf";
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  });
+
+  // Lead-hendelse til Meta, bare etter en ekte innsending og bare med samtykke
+  var consent = null;
+  try { consent = window.localStorage.getItem("tqai-consent"); } catch (e) {}
+  if (C.metaPixelId && consent === "yes") {
+    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+    window.fbq("init", C.metaPixelId);
+    window.fbq("track", "PageView");
+    if (lead && lead.t && Date.now() - lead.t < 30 * 60 * 1000 && !lead.sent) {
+      window.fbq("track", "Lead");
+      try { lead.sent = true; window.sessionStorage.setItem("tqai-lead", JSON.stringify(lead)); } catch (e) {}
+    }
+  }
+})();
+</script>
+</body>
+</html>
